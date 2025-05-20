@@ -13,7 +13,7 @@ from transformers import (
 )
 
 # Google Drive file ID of your zipped models
-GOOGLE_DRIVE_FILE_ID = "1XtJ-8o_iNjvWbCgLWik6jLhDBJvx3DyC"
+GOOGLE_DRIVE_FILE_ID = "1bD-2MILzhYjKYEkWoiAiRTdtGs6FtRHl"
 MODELS_DIR = "models"
 ZIP_PATH = MODELS_DIR + ".zip"
 
