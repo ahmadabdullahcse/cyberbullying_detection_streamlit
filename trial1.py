@@ -8,7 +8,6 @@ import numpy as np
 from transformers import (
     BertTokenizer, BertForSequenceClassification,
     RobertaTokenizer, RobertaForSequenceClassification,
-    AlbertTokenizer, AlbertForSequenceClassification,
     GPT2Tokenizer, GPT2ForSequenceClassification,
     XLNetTokenizer, XLNetForSequenceClassification
 )
@@ -83,10 +82,10 @@ def load_model_and_tokenizer():
     models.append(roberta_model)
 
     # ALBERT
-    albert_tokenizer = AlbertTokenizer.from_pretrained(f"{MODELS_DIR}/saved_albert_model")
-    albert_model = AlbertForSequenceClassification.from_pretrained(f"{MODELS_DIR}/saved_albert_model").eval()
-    tokenizers.append(albert_tokenizer)
-    models.append(albert_model)
+    # albert_tokenizer = AlbertTokenizer.from_pretrained(f"{MODELS_DIR}/saved_albert_model")
+    # albert_model = AlbertForSequenceClassification.from_pretrained(f"{MODELS_DIR}/saved_albert_model").eval()
+    # tokenizers.append(albert_tokenizer)
+    # models.append(albert_model)
 
     # GPT-2
     gpt2_tokenizer = GPT2Tokenizer.from_pretrained(f"{MODELS_DIR}/saved_gpt2_model")
