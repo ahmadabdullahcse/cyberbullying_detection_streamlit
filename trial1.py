@@ -17,10 +17,8 @@ GOOGLE_DRIVE_FILE_ID = "1XtJ-8o_iNjvWbCgLWik6jLhDBJvx3DyC"
 MODELS_DIR = "models"
 ZIP_PATH = MODELS_DIR + ".zip"
 
-# Functions to download from Google Drive
 def download_file_from_google_drive(id, destination):
     URL = "https://docs.google.com/uc?export=download"
-
     session = requests.Session()
 
     response = session.get(URL, params={'id': id}, stream=True)
@@ -60,10 +58,9 @@ def download_and_unzip_google_drive(file_id, extract_to):
 # Download models if not present
 download_and_unzip_google_drive(GOOGLE_DRIVE_FILE_ID, MODELS_DIR)
 
-# Labels
+# Labels for classification
 labels = ['not bully', 'religious', 'others', 'sexual']
 
-# Load models and tokenizers
 @st.cache_resource(show_spinner=False)
 def load_model_and_tokenizer():
     models = []
@@ -80,12 +77,6 @@ def load_model_and_tokenizer():
     roberta_model = RobertaForSequenceClassification.from_pretrained(f"{MODELS_DIR}/saved_roberta_model").eval()
     tokenizers.append(roberta_tokenizer)
     models.append(roberta_model)
-
-    # ALBERT
-    # albert_tokenizer = AlbertTokenizer.from_pretrained(f"{MODELS_DIR}/saved_albert_model")
-    # albert_model = AlbertForSequenceClassification.from_pretrained(f"{MODELS_DIR}/saved_albert_model").eval()
-    # tokenizers.append(albert_tokenizer)
-    # models.append(albert_model)
 
     # GPT-2
     gpt2_tokenizer = GPT2Tokenizer.from_pretrained(f"{MODELS_DIR}/saved_gpt2_model")
@@ -104,7 +95,6 @@ def load_model_and_tokenizer():
 
 models, tokenizers = load_model_and_tokenizer()
 
-# Streamlit UI
 st.title("Cyberbullying Detection using Transformer Ensemble")
 st.write("Enter a sentence to classify it into cyberbullying categories.")
 
